@@ -1,0 +1,423 @@
+/* ----------------------
+    1. @import
+    2. variables
+        2.1 Scale
+        2.2 Colour Palette
+        2.3 @font-face
+    3. General Styles for HTML Elements
+        3.1 Headings
+    4. Mobile style
+    5. Tablet Style
+    6. Screen
+    7. Print
+------------------------ */
+
+/* --- 1. reset css --- */
+
+/* We add this here in addition to the index.html because it's being phased out and switching to CSS in the future.  */
+/* For microsoft viewport:  */
+@-ms-viewport {
+    width: device-width;
+}
+/* For opera viewport:  */
+@-o-viewport {
+    width: device-width;
+}
+/* For generic viewport:  */
+@viewport {
+    width: device-width;
+}
+
+/* http://meyerweb.com/eric/tools/css/reset/ 
+   v2.0 | 20110126
+   License: none (public domain)
+*/
+
+html, body, div, span, applet, object, iframe,
+h1, h2, h3, h4, h5, h6, p, blockquote, pre,
+a, abbr, acronym, address, big, cite, code,
+del, dfn, em, img, ins, kbd, q, s, samp,
+small, strike, strong, sub, sup, tt, var,
+b, u, i, center,
+dl, dt, dd, ol, ul, li,
+fieldset, form, label, legend,
+table, caption, tbody, tfoot, thead, tr, th, td,
+article, aside, canvas, details, embed, 
+figure, figcaption, footer, header, hgroup, 
+menu, nav, output, ruby, section, summary,
+time, mark, audio, video {
+	margin: 0;
+	padding: 0;
+	border: 0;
+	font-size: 100%;
+	font: inherit;
+	vertical-align: baseline;
+}
+/* HTML5 display-role reset for older browsers */
+article, aside, details, figcaption, figure, 
+footer, header, hgroup, menu, nav, section {
+	display: block;
+}
+body {
+	line-height: 1;
+}
+ol, ul {
+	list-style: none;
+}
+blockquote, q {
+	quotes: none;
+}
+blockquote:before, blockquote:after,
+q:before, q:after {
+	content: '';
+	content: none;
+}
+table {
+	border-collapse: collapse;
+	border-spacing: 0;
+}
+
+* {
+    -webkit-text-size-adjust: auto;
+    box-sizing: border-box;
+}
+
+html, body {
+    width: 100%;
+    height: 100%;
+}
+
+body {
+    z-index: 0;
+}
+
+img {
+    width: 100%;
+}
+/* --- 2. variables --- */
+
+    /* ---------------------
+        2.1 Scale: https://www.modularscale.com/?1.15&em&1.667
+    -------------- */
+    /* 2.2 Colour Palette */
+    :root {
+        --black:#11100c;
+        --white:#ffffff;
+
+        --orange:#F09609;
+        --brown:#996600;
+        --lightpink:#DF72AC;
+        --darkpink:#ED1790;
+        --red:#E51E25;
+        --greenblue:#16ABA8;
+        --green:#339933;
+        --lightgreen:#8AC03F;
+        --blue:#219FD9;
+        --purple:#7E51A1;
+        --gray:#767676;
+    }
+
+    /* 2.3 Typeface Palette */
+    :root {
+        --font-neue: "Helvetica Neue", "neue-haas-unica", "helvetica", tahoma, sans-serif;
+    }
+
+
+/* --- 3. General Styles for HTML Elements --- */
+:root {
+    font-size: 1rem; /* fallback font size */
+    font-feature-settings: "kern", "liga", "clig", "calt", "onum", "pnum";
+}
+
+@supports (font-kerning: normal) and (font-variant-ligatures: common-ligatures contextual) and (font-variant-numeric: oldstyle-nums proportional-nums) {
+    :root {
+        font-kerning: normal;
+        font-variant-ligatures: common-ligatures contextual;
+        font-variant-numeric: oldstyle-nums proportional-nums;
+        font-feature-settings: normal;
+    }
+}
+
+:root.wf-active {
+    font-size: 1.15rem;
+}
+
+.wf-active body {
+    line-height: 1;
+    letter-spacing: 0;
+}
+
+body {
+    font-family: var(--font-neue); 
+    background-color: var(--black);
+    color: var(--white);
+}
+
+main {
+    hyphens: auto;
+}
+
+p {
+    margin: 0 0 .7em 0;
+}
+
+em {
+    font-style: italic;
+}
+
+/* Abbreviations, numbers, whitespace management */
+abbr {
+    letter-spacing: .01em;
+    font-feature-settings: "kern", "liga", "clig", "calt", "c2pc", "smcp";
+}
+
+@supports (font-variant-caps: all-small-caps) {
+    abbr {
+        font-variant-caps: all-small-caps;
+        font-feature-settings: normal;
+    }
+}
+
+cite::before {
+    content: "-";
+    margin-right: .25em;
+}
+
+/*  set font size  (Typesettings) */
+h1{     
+    font-size: 2vw;
+    text-align: center; 
+    font-weight: 500; 
+    line-height: 1.2;   
+}
+h2{     
+    font-size: 0.6vw; 
+    font-weight: 500; 
+    text-align: left;
+    line-height: 1.4;    
+}
+h3{
+    font-size: 1vw; 
+    text-align: left;
+}
+h5{
+    text-align: center;
+    font-size: 2vw;
+}
+
+header h1{
+    font-weight: 200;
+    font-size: 4vw;
+    text-align: left;
+    width: 80%;
+    margin: 0 auto;
+}
+
+main{
+    width: 80%;
+    margin: 0 auto;
+}
+
+.table-top, .table-bottom{
+    margin: 1.5vw 0;
+}
+
+/* set top table grid */
+.table-top {
+    display: grid;
+    grid-template-columns: repeat(18, 1fr);
+    grid-gap: 0.3vw;
+}
+section:first-child section{
+    display: grid;
+    grid-template-rows: repeat(7, 1fr);
+    grid-gap: 0.3vw;
+}
+
+/* set bottom table grid */
+.table-bottom {
+    display: grid;
+    grid-template-rows: repeat(2, 1fr);
+    grid-gap:0.3vw;
+}
+section:last-child section{
+    display: grid;
+    grid-template-columns: repeat(16, 1fr);
+    grid-gap:0.3vw;
+    align-items: center;
+}
+
+
+/* ----  set top table - background color  */
+section:first-child section:nth-child(1) article{
+    background-color: var(--orange);
+}
+section:first-child section:nth-child(2) article{
+    background-color: var(--brown);
+}
+section:first-child section article{
+    background-color: var(--lightpink);
+}
+section:first-child section:nth-child(13) article{
+    background-color: var(--blue);
+}
+section:first-child section:nth-child(14) article{
+    background-color: var(--greenblue);
+}
+section:first-child section:nth-child(15) article{
+    background-color: var(--green);
+}
+section:first-child section:nth-child(16) article{
+    background-color: var(--green);
+}
+section:first-child section:nth-child(17) article{
+    background-color: var(--lightgreen);
+}
+section:first-child section:nth-child(18) article{
+    background-color: var(--purple);
+}
+/*  specific color setting */
+section:first-child section:nth-child(1) article:first-child{
+    background-color: var(--green);
+}
+section:first-child section:nth-child(3) article:nth-child(6){
+    background-color: var(--darkpink);
+}
+section:first-child section:nth-child(3) article:nth-child(7){
+    background-color: var(--red);
+}
+section:first-child section:nth-child(13) article:nth-child(2){
+    background-color: var(--greenblue);
+}
+section:first-child section:nth-child(14) article:nth-child(2){
+    background-color: var(--green);
+}
+section:first-child section:nth-child(14) article:nth-child(5), section:first-child section:nth-child(14) article:nth-child(6){
+    background-color: var(--blue);
+}
+section:first-child section:nth-child(15) article:nth-child(4), section:first-child section:nth-child(15) article:nth-child(5){
+    background-color: var(--greenblue);
+}
+section:first-child section:nth-child(15) article:nth-child(6){
+    background-color: var(--blue);
+}
+section:first-child section:nth-child(16) article:nth-child(5), section:first-child section:nth-child(16) article:nth-child(6){
+    background-color: var(--greenblue);
+}
+section:first-child section:nth-child(13) article:nth-child(7), section:first-child section:nth-child(14) article:nth-child(7), 
+section:first-child section:nth-child(15) article:nth-child(7), section:first-child section:nth-child(16) article:nth-child(7), 
+section:first-child section:nth-child(17) article:nth-child(7), section:first-child section:nth-child(18) article:nth-child(7){
+    background-color: var(--gray);
+}
+/* bottom table background color set */
+section:last-child section:first-child article{
+    background-color: var(--darkpink);
+}
+section:last-child section:last-child article{
+    background-color: var(--red);
+}
+
+/* set footer table */
+
+footer{
+    position: absolute;
+    top: 25%;
+    left: 24%;
+    display: grid;
+    grid-template-columns: repeat(3, 1fr);
+    width: 40%;
+}
+footer section{
+    display: grid;
+    grid-template-columns: 1fr 6fr;
+    grid-template-rows: 1.5vw;
+}
+footer p{
+    width: 1vw;
+    height: 1vw;
+}
+footer div:nth-child(1) section:nth-child(1) p{
+    background-color: var(--orange);
+}
+footer div:nth-child(1) section:nth-child(2) p{
+    background-color: var(--brown);
+}
+footer div:nth-child(1) section:nth-child(3) p{
+    background-color: var(--blue);
+}
+footer div:nth-child(1) section:nth-child(4) p{
+    background-color: var(--lightpink);
+}
+footer div:nth-child(2) section:nth-child(1) p{
+    background-color: var(--greenblue);
+}
+footer div:nth-child(2) section:nth-child(2) p{
+    background-color: var(--green);
+}
+footer div:nth-child(2) section:nth-child(3) p{
+    background-color: var(--lightgreen);
+}
+footer div:nth-child(2) section:nth-child(4) p{
+    background-color: var(--purple);
+}
+footer div:nth-child(3) section:nth-child(1) p{
+    background-color: var(--darkpink);
+}
+footer div:nth-child(3) section:nth-child(2) p{
+    background-color: var(--red);
+}
+
+
+/* --- 4. Mobile style --- */
+
+@media screen and (max-width:50em) {
+    header h1, main{
+        width: 90%;
+    }
+    
+    footer{
+        top: 8%;
+    }
+}
+/* --- 5. Tablet ---- */
+@media screen and (min-width:50em) {
+    footer{
+        top: 15%;
+    }
+}
+/* --- 6. Laptop ---- */
+@media screen and (min-width:80em) {
+    footer{
+        top: 25%;
+    }
+}
+/* --- 7. Print ---- */
+
+@page {
+  size: 8.5in 11in; /* -- letter size print --*/
+  margin: 0;
+
+}
+@media print
+{
+
+    *{ 
+        color-adjust: exact !important;
+         -webkit-print-color-adjust: exact !important; 
+    }
+  
+     body div{
+         background-color: var(--black) !important;
+         height: 100% !important;
+         padding: 16.5% 0;
+     }
+     
+    .table-bottom{
+        padding: 1.5vw 0 !important;
+    }
+    
+    footer{
+        top: 20%;
+        left: 22%;
+    }
+}
